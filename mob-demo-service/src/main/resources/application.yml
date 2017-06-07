@@ -1,0 +1,18 @@
+
+#dubbo 配置
+spring.dubbo:
+  #表示要扫描的package目录
+  scan: com.mob.service
+  application:
+    name: mob-demo-service
+  registry:
+    address: zookeeper://localcentos:2181
+  dubbo-protocol:
+    port: 20881
+  rest-protocol:
+    port: 8081
+    server: tomcat
+
+
+
+
