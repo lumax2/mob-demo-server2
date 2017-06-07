@@ -6,5 +6,5 @@ package com.mob.service;
  * Date: 2017/6/2:12:24
  */
 public interface DemoService {
-    void test();
+    String test();
 }
