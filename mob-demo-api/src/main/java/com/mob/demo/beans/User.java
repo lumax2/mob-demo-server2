@@ -1,4 +1,4 @@
-package com.mob.beans;
+package com.mob.demo.beans;
 
 /**
  * TODO:写描述

@@ -1,8 +1,7 @@
-package com.mob;
+package com.mob.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ImportResource;
 
 /**
  * TODO:写描述

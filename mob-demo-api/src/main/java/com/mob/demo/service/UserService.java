@@ -1,7 +1,7 @@
-package com.mob.service;
+package com.mob.demo.service;
 
 
-import com.mob.beans.User;
+import com.mob.demo.beans.User;
 
 /**
  * TODO:写描述

@@ -1,7 +1,7 @@
-package com.mob.service.impl;
+package com.mob.demo.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.mob.service.MainService;
+import com.mob.demo.service.MainService;
 
 import javax.ws.rs.Path;
 

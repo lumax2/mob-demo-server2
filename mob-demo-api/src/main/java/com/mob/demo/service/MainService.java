@@ -1,4 +1,4 @@
-package com.mob.service;
+package com.mob.demo.service;
 
 /**
  * TODO:写描述

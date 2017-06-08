@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mob.demo.mapper.AppMapper" >
+  <resultMap id="BaseResultMap" type="com.mob.demo.domain.App" >
+    <id column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="developer_id" property="developerId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_ip" property="createIp" jdbcType="VARCHAR" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="appkey" property="appkey" jdbcType="VARCHAR" />
+    <result column="appsecret" property="appsecret" jdbcType="VARCHAR" />
+    <result column="seller_name" property="sellerName" jdbcType="VARCHAR" />
+    <result column="seller_url" property="sellerUrl" jdbcType="VARCHAR" />
+    <result column="appname" property="appname" jdbcType="VARCHAR" />
+    <result column="appicon" property="appicon" jdbcType="VARCHAR" />
+    <result column="app_plat" property="appPlat" jdbcType="INTEGER" />
+    <result column="storename" property="storename" jdbcType="VARCHAR" />
+    <result column="storeicon" property="storeicon" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="VARCHAR" />
+    <result column="download_url" property="downloadUrl" jdbcType="VARCHAR" />
+    <result column="label" property="label" jdbcType="VARCHAR" />
+    <result column="online" property="online" jdbcType="TINYINT" />
+    <result column="instore" property="instore" jdbcType="TINYINT" />
+    <result column="online_at" property="onlineAt" jdbcType="TIMESTAMP" />
+    <result column="first_at" property="firstAt" jdbcType="TIMESTAMP" />
+    <result column="first_model" property="firstModel" jdbcType="VARCHAR" />
+    <result column="test_at" property="testAt" jdbcType="TIMESTAMP" />
+    <result column="sdk_version" property="sdkVersion" jdbcType="VARCHAR" />
+    <result column="sdk_version_confirm" property="sdkVersionConfirm" jdbcType="VARCHAR" />
+    <result column="first_device" property="firstDevice" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="BIT" />
+    <result column="package" property="_package" jdbcType="VARCHAR" />
+    <result column="callback" property="callback" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
+    <result column="multiple_plat" property="multiplePlat" jdbcType="BIT" />
+    <result column="publish" property="publish" jdbcType="BIT" />
+    <result column="store_id" property="storeId" jdbcType="VARCHAR" />
+    <result column="package_name" property="packageName" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="is_refresh" property="isRefresh" jdbcType="BIT" />
+    <result column="bundle_id" property="bundleId" jdbcType="VARCHAR" />
+    <result column="url_schema_suffix" property="urlSchemaSuffix" jdbcType="VARCHAR" />
+    <result column="iphone_store_id" property="iphoneStoreId" jdbcType="VARCHAR" />
+    <result column="ipad_store_id" property="ipadStoreId" jdbcType="VARCHAR" />
+    <result column="app_level" property="appLevel" jdbcType="CHAR" />
+    <result column="bonus" property="bonus" jdbcType="DECIMAL" />
+    <result column="abandon" property="abandon" jdbcType="BIT" />
+    <result column="ios_download_url" property="iosDownloadUrl" jdbcType="VARCHAR" />
+    <result column="ios_universal_link" property="iosUniversalLink" jdbcType="VARCHAR" />
+    <result column="team_id" property="teamId" jdbcType="VARCHAR" />
+    <result column="android_pkg_name" property="androidPkgName" jdbcType="VARCHAR" />
+    <result column="android_url_scheme" property="androidUrlScheme" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.mob.demo.domain.AppWithBLOBs" extends="BaseResultMap" >
+    <result column="app_version" property="appVersion" jdbcType="LONGVARCHAR" />
+    <result column="apppkg" property="apppkg" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    app_id, developer_id, status, create_ip, create_at, appkey, appsecret, seller_name, 
+    seller_url, appname, appicon, app_plat, storename, storeicon, category_id, download_url, 
+    label, online, instore, online_at, first_at, first_model, test_at, sdk_version, sdk_version_confirm, 
+    first_device, `level`, package, callback, `type`, thumb, multiple_plat, publish, store_id,
+    package_name, `language`, is_refresh, bundle_id, url_schema_suffix, iphone_store_id,
+    ipad_store_id, app_level, bonus, abandon, ios_download_url, ios_universal_link, team_id, 
+    android_pkg_name, android_url_scheme
+  </sql>
+  <sql id="Blob_Column_List" >
+    app_version, apppkg, description
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.mob.demo.domain.AppExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from app
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mob.demo.domain.AppExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from app
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from app
+    where app_id = #{appId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from app
+    where app_id = #{appId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mob.demo.domain.AppExample" >
+    delete from app
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mob.demo.domain.AppWithBLOBs" >
+    insert into app (app_id, developer_id, status, 
+      create_ip, create_at, appkey, 
+      appsecret, seller_name, seller_url, 
+      appname, appicon, app_plat, 
+      storename, storeicon, category_id, 
+      download_url, label, online, 
+      instore, online_at, first_at, 
+      first_model, test_at, sdk_version, 
+      sdk_version_confirm, first_device, `level`,
+      package, callback, `type`,
+      thumb, multiple_plat, publish, 
+      store_id, package_name, `language`,
+      is_refresh, bundle_id, url_schema_suffix, 
+      iphone_store_id, ipad_store_id, app_level, 
+      bonus, abandon, ios_download_url, 
+      ios_universal_link, team_id, android_pkg_name, 
+      android_url_scheme, app_version, apppkg, 
+      description)
+    values (#{appId,jdbcType=INTEGER}, #{developerId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createIp,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, #{appkey,jdbcType=VARCHAR}, 
+      #{appsecret,jdbcType=VARCHAR}, #{sellerName,jdbcType=VARCHAR}, #{sellerUrl,jdbcType=VARCHAR}, 
+      #{appname,jdbcType=VARCHAR}, #{appicon,jdbcType=VARCHAR}, #{appPlat,jdbcType=INTEGER}, 
+      #{storename,jdbcType=VARCHAR}, #{storeicon,jdbcType=VARCHAR}, #{categoryId,jdbcType=VARCHAR}, 
+      #{downloadUrl,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, #{online,jdbcType=TINYINT}, 
+      #{instore,jdbcType=TINYINT}, #{onlineAt,jdbcType=TIMESTAMP}, #{firstAt,jdbcType=TIMESTAMP}, 
+      #{firstModel,jdbcType=VARCHAR}, #{testAt,jdbcType=TIMESTAMP}, #{sdkVersion,jdbcType=VARCHAR}, 
+      #{sdkVersionConfirm,jdbcType=VARCHAR}, #{firstDevice,jdbcType=VARCHAR}, #{level,jdbcType=BIT}, 
+      #{_package,jdbcType=VARCHAR}, #{callback,jdbcType=VARCHAR}, #{type,jdbcType=CHAR},
+      #{thumb,jdbcType=VARCHAR}, #{multiplePlat,jdbcType=BIT}, #{publish,jdbcType=BIT}, 
+      #{storeId,jdbcType=VARCHAR}, #{packageName,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{isRefresh,jdbcType=BIT}, #{bundleId,jdbcType=VARCHAR}, #{urlSchemaSuffix,jdbcType=VARCHAR}, 
+      #{iphoneStoreId,jdbcType=VARCHAR}, #{ipadStoreId,jdbcType=VARCHAR}, #{appLevel,jdbcType=CHAR}, 
+      #{bonus,jdbcType=DECIMAL}, #{abandon,jdbcType=BIT}, #{iosDownloadUrl,jdbcType=VARCHAR}, 
+      #{iosUniversalLink,jdbcType=VARCHAR}, #{teamId,jdbcType=VARCHAR}, #{androidPkgName,jdbcType=VARCHAR}, 
+      #{androidUrlScheme,jdbcType=VARCHAR}, #{appVersion,jdbcType=LONGVARCHAR}, #{apppkg,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mob.demo.domain.AppWithBLOBs" >
+    insert into app
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="developerId != null" >
+        developer_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createIp != null" >
+        create_ip,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="appkey != null" >
+        appkey,
+      </if>
+      <if test="appsecret != null" >
+        appsecret,
+      </if>
+      <if test="sellerName != null" >
+        seller_name,
+      </if>
+      <if test="sellerUrl != null" >
+        seller_url,
+      </if>
+      <if test="appname != null" >
+        appname,
+      </if>
+      <if test="appicon != null" >
+        appicon,
+      </if>
+      <if test="appPlat != null" >
+        app_plat,
+      </if>
+      <if test="storename != null" >
+        storename,
+      </if>
+      <if test="storeicon != null" >
+        storeicon,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="downloadUrl != null" >
+        download_url,
+      </if>
+      <if test="label != null" >
+        label,
+      </if>
+      <if test="online != null" >
+        online,
+      </if>
+      <if test="instore != null" >
+        instore,
+      </if>
+      <if test="onlineAt != null" >
+        online_at,
+      </if>
+      <if test="firstAt != null" >
+        first_at,
+      </if>
+      <if test="firstModel != null" >
+        first_model,
+      </if>
+      <if test="testAt != null" >
+        test_at,
+      </if>
+      <if test="sdkVersion != null" >
+        sdk_version,
+      </if>
+      <if test="sdkVersionConfirm != null" >
+        sdk_version_confirm,
+      </if>
+      <if test="firstDevice != null" >
+        first_device,
+      </if>
+      <if test="level != null" >
+        `level`,
+      </if>
+      <if test="_package != null" >
+        package,
+      </if>
+      <if test="callback != null" >
+        callback,
+      </if>
+      <if test="type != null" >
+        `type`,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+      <if test="multiplePlat != null" >
+        multiple_plat,
+      </if>
+      <if test="publish != null" >
+        publish,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="packageName != null" >
+        package_name,
+      </if>
+      <if test="language != null" >
+        `language`,
+      </if>
+      <if test="isRefresh != null" >
+        is_refresh,
+      </if>
+      <if test="bundleId != null" >
+        bundle_id,
+      </if>
+      <if test="urlSchemaSuffix != null" >
+        url_schema_suffix,
+      </if>
+      <if test="iphoneStoreId != null" >
+        iphone_store_id,
+      </if>
+      <if test="ipadStoreId != null" >
+        ipad_store_id,
+      </if>
+      <if test="appLevel != null" >
+        app_level,
+      </if>
+      <if test="bonus != null" >
+        bonus,
+      </if>
+      <if test="abandon != null" >
+        abandon,
+      </if>
+      <if test="iosDownloadUrl != null" >
+        ios_download_url,
+      </if>
+      <if test="iosUniversalLink != null" >
+        ios_universal_link,
+      </if>
+      <if test="teamId != null" >
+        team_id,
+      </if>
+      <if test="androidPkgName != null" >
+        android_pkg_name,
+      </if>
+      <if test="androidUrlScheme != null" >
+        android_url_scheme,
+      </if>
+      <if test="appVersion != null" >
+        app_version,
+      </if>
+      <if test="apppkg != null" >
+        apppkg,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="developerId != null" >
+        #{developerId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createIp != null" >
+        #{createIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appkey != null" >
+        #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null" >
+        #{appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerName != null" >
+        #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerUrl != null" >
+        #{sellerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appname != null" >
+        #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="appicon != null" >
+        #{appicon,jdbcType=VARCHAR},
+      </if>
+      <if test="appPlat != null" >
+        #{appPlat,jdbcType=INTEGER},
+      </if>
+      <if test="storename != null" >
+        #{storename,jdbcType=VARCHAR},
+      </if>
+      <if test="storeicon != null" >
+        #{storeicon,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null" >
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="online != null" >
+        #{online,jdbcType=TINYINT},
+      </if>
+      <if test="instore != null" >
+        #{instore,jdbcType=TINYINT},
+      </if>
+      <if test="onlineAt != null" >
+        #{onlineAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstAt != null" >
+        #{firstAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstModel != null" >
+        #{firstModel,jdbcType=VARCHAR},
+      </if>
+      <if test="testAt != null" >
+        #{testAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sdkVersion != null" >
+        #{sdkVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="sdkVersionConfirm != null" >
+        #{sdkVersionConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDevice != null" >
+        #{firstDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=BIT},
+      </if>
+      <if test="_package != null" >
+        #{_package,jdbcType=VARCHAR},
+      </if>
+      <if test="callback != null" >
+        #{callback,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="multiplePlat != null" >
+        #{multiplePlat,jdbcType=BIT},
+      </if>
+      <if test="publish != null" >
+        #{publish,jdbcType=BIT},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageName != null" >
+        #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="isRefresh != null" >
+        #{isRefresh,jdbcType=BIT},
+      </if>
+      <if test="bundleId != null" >
+        #{bundleId,jdbcType=VARCHAR},
+      </if>
+      <if test="urlSchemaSuffix != null" >
+        #{urlSchemaSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="iphoneStoreId != null" >
+        #{iphoneStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="ipadStoreId != null" >
+        #{ipadStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="appLevel != null" >
+        #{appLevel,jdbcType=CHAR},
+      </if>
+      <if test="bonus != null" >
+        #{bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="abandon != null" >
+        #{abandon,jdbcType=BIT},
+      </if>
+      <if test="iosDownloadUrl != null" >
+        #{iosDownloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iosUniversalLink != null" >
+        #{iosUniversalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null" >
+        #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="androidPkgName != null" >
+        #{androidPkgName,jdbcType=VARCHAR},
+      </if>
+      <if test="androidUrlScheme != null" >
+        #{androidUrlScheme,jdbcType=VARCHAR},
+      </if>
+      <if test="appVersion != null" >
+        #{appVersion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="apppkg != null" >
+        #{apppkg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mob.demo.domain.AppExample" resultType="java.lang.Integer" >
+    select count(*) from app
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update app
+    <set >
+      <if test="record.appId != null" >
+        app_id = #{record.appId,jdbcType=INTEGER},
+      </if>
+      <if test="record.developerId != null" >
+        developer_id = #{record.developerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createIp != null" >
+        create_ip = #{record.createIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createAt != null" >
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.appkey != null" >
+        appkey = #{record.appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appsecret != null" >
+        appsecret = #{record.appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerName != null" >
+        seller_name = #{record.sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerUrl != null" >
+        seller_url = #{record.sellerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appname != null" >
+        appname = #{record.appname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appicon != null" >
+        appicon = #{record.appicon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appPlat != null" >
+        app_plat = #{record.appPlat,jdbcType=INTEGER},
+      </if>
+      <if test="record.storename != null" >
+        storename = #{record.storename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeicon != null" >
+        storeicon = #{record.storeicon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryId != null" >
+        category_id = #{record.categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downloadUrl != null" >
+        download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label != null" >
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.online != null" >
+        online = #{record.online,jdbcType=TINYINT},
+      </if>
+      <if test="record.instore != null" >
+        instore = #{record.instore,jdbcType=TINYINT},
+      </if>
+      <if test="record.onlineAt != null" >
+        online_at = #{record.onlineAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.firstAt != null" >
+        first_at = #{record.firstAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.firstModel != null" >
+        first_model = #{record.firstModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testAt != null" >
+        test_at = #{record.testAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sdkVersion != null" >
+        sdk_version = #{record.sdkVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sdkVersionConfirm != null" >
+        sdk_version_confirm = #{record.sdkVersionConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstDevice != null" >
+        first_device = #{record.firstDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.level != null" >
+        level = #{record.level,jdbcType=BIT},
+      </if>
+      <if test="record.package != null" >
+        package = #{record._package,jdbcType=VARCHAR},
+      </if>
+      <if test="record.callback != null" >
+        callback = #{record.callback,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.thumb != null" >
+        thumb = #{record.thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.multiplePlat != null" >
+        multiple_plat = #{record.multiplePlat,jdbcType=BIT},
+      </if>
+      <if test="record.publish != null" >
+        publish = #{record.publish,jdbcType=BIT},
+      </if>
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packageName != null" >
+        package_name = #{record.packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.language != null" >
+        language = #{record.language,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isRefresh != null" >
+        is_refresh = #{record.isRefresh,jdbcType=BIT},
+      </if>
+      <if test="record.bundleId != null" >
+        bundle_id = #{record.bundleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urlSchemaSuffix != null" >
+        url_schema_suffix = #{record.urlSchemaSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iphoneStoreId != null" >
+        iphone_store_id = #{record.iphoneStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ipadStoreId != null" >
+        ipad_store_id = #{record.ipadStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appLevel != null" >
+        app_level = #{record.appLevel,jdbcType=CHAR},
+      </if>
+      <if test="record.bonus != null" >
+        bonus = #{record.bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.abandon != null" >
+        abandon = #{record.abandon,jdbcType=BIT},
+      </if>
+      <if test="record.iosDownloadUrl != null" >
+        ios_download_url = #{record.iosDownloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iosUniversalLink != null" >
+        ios_universal_link = #{record.iosUniversalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamId != null" >
+        team_id = #{record.teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.androidPkgName != null" >
+        android_pkg_name = #{record.androidPkgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.androidUrlScheme != null" >
+        android_url_scheme = #{record.androidUrlScheme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appVersion != null" >
+        app_version = #{record.appVersion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.apppkg != null" >
+        apppkg = #{record.apppkg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update app
+    set app_id = #{record.appId,jdbcType=INTEGER},
+      developer_id = #{record.developerId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      create_ip = #{record.createIp,jdbcType=VARCHAR},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      appkey = #{record.appkey,jdbcType=VARCHAR},
+      appsecret = #{record.appsecret,jdbcType=VARCHAR},
+      seller_name = #{record.sellerName,jdbcType=VARCHAR},
+      seller_url = #{record.sellerUrl,jdbcType=VARCHAR},
+      appname = #{record.appname,jdbcType=VARCHAR},
+      appicon = #{record.appicon,jdbcType=VARCHAR},
+      app_plat = #{record.appPlat,jdbcType=INTEGER},
+      storename = #{record.storename,jdbcType=VARCHAR},
+      storeicon = #{record.storeicon,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=VARCHAR},
+      download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      label = #{record.label,jdbcType=VARCHAR},
+      online = #{record.online,jdbcType=TINYINT},
+      instore = #{record.instore,jdbcType=TINYINT},
+      online_at = #{record.onlineAt,jdbcType=TIMESTAMP},
+      first_at = #{record.firstAt,jdbcType=TIMESTAMP},
+      first_model = #{record.firstModel,jdbcType=VARCHAR},
+      test_at = #{record.testAt,jdbcType=TIMESTAMP},
+      sdk_version = #{record.sdkVersion,jdbcType=VARCHAR},
+      sdk_version_confirm = #{record.sdkVersionConfirm,jdbcType=VARCHAR},
+      first_device = #{record.firstDevice,jdbcType=VARCHAR},
+      `level` = #{record.level,jdbcType=BIT},
+      package = #{record._package,jdbcType=VARCHAR},
+      callback = #{record.callback,jdbcType=VARCHAR},
+      `type` = #{record.type,jdbcType=CHAR},
+      thumb = #{record.thumb,jdbcType=VARCHAR},
+      multiple_plat = #{record.multiplePlat,jdbcType=BIT},
+      publish = #{record.publish,jdbcType=BIT},
+      store_id = #{record.storeId,jdbcType=VARCHAR},
+      package_name = #{record.packageName,jdbcType=VARCHAR},
+      `language` = #{record.language,jdbcType=VARCHAR},
+      is_refresh = #{record.isRefresh,jdbcType=BIT},
+      bundle_id = #{record.bundleId,jdbcType=VARCHAR},
+      url_schema_suffix = #{record.urlSchemaSuffix,jdbcType=VARCHAR},
+      iphone_store_id = #{record.iphoneStoreId,jdbcType=VARCHAR},
+      ipad_store_id = #{record.ipadStoreId,jdbcType=VARCHAR},
+      app_level = #{record.appLevel,jdbcType=CHAR},
+      bonus = #{record.bonus,jdbcType=DECIMAL},
+      abandon = #{record.abandon,jdbcType=BIT},
+      ios_download_url = #{record.iosDownloadUrl,jdbcType=VARCHAR},
+      ios_universal_link = #{record.iosUniversalLink,jdbcType=VARCHAR},
+      team_id = #{record.teamId,jdbcType=VARCHAR},
+      android_pkg_name = #{record.androidPkgName,jdbcType=VARCHAR},
+      android_url_scheme = #{record.androidUrlScheme,jdbcType=VARCHAR},
+      app_version = #{record.appVersion,jdbcType=LONGVARCHAR},
+      apppkg = #{record.apppkg,jdbcType=LONGVARCHAR},
+      description = #{record.description,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update app
+    set app_id = #{record.appId,jdbcType=INTEGER},
+      developer_id = #{record.developerId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      create_ip = #{record.createIp,jdbcType=VARCHAR},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      appkey = #{record.appkey,jdbcType=VARCHAR},
+      appsecret = #{record.appsecret,jdbcType=VARCHAR},
+      seller_name = #{record.sellerName,jdbcType=VARCHAR},
+      seller_url = #{record.sellerUrl,jdbcType=VARCHAR},
+      appname = #{record.appname,jdbcType=VARCHAR},
+      appicon = #{record.appicon,jdbcType=VARCHAR},
+      app_plat = #{record.appPlat,jdbcType=INTEGER},
+      storename = #{record.storename,jdbcType=VARCHAR},
+      storeicon = #{record.storeicon,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=VARCHAR},
+      download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      label = #{record.label,jdbcType=VARCHAR},
+      online = #{record.online,jdbcType=TINYINT},
+      instore = #{record.instore,jdbcType=TINYINT},
+      online_at = #{record.onlineAt,jdbcType=TIMESTAMP},
+      first_at = #{record.firstAt,jdbcType=TIMESTAMP},
+      first_model = #{record.firstModel,jdbcType=VARCHAR},
+      test_at = #{record.testAt,jdbcType=TIMESTAMP},
+      sdk_version = #{record.sdkVersion,jdbcType=VARCHAR},
+      sdk_version_confirm = #{record.sdkVersionConfirm,jdbcType=VARCHAR},
+      first_device = #{record.firstDevice,jdbcType=VARCHAR},
+      `level` = #{record.level,jdbcType=BIT},
+      package = #{record._package,jdbcType=VARCHAR},
+      callback = #{record.callback,jdbcType=VARCHAR},
+      `type` = #{record.type,jdbcType=CHAR},
+      thumb = #{record.thumb,jdbcType=VARCHAR},
+      multiple_plat = #{record.multiplePlat,jdbcType=BIT},
+      publish = #{record.publish,jdbcType=BIT},
+      store_id = #{record.storeId,jdbcType=VARCHAR},
+      package_name = #{record.packageName,jdbcType=VARCHAR},
+      `language` = #{record.language,jdbcType=VARCHAR},
+      is_refresh = #{record.isRefresh,jdbcType=BIT},
+      bundle_id = #{record.bundleId,jdbcType=VARCHAR},
+      url_schema_suffix = #{record.urlSchemaSuffix,jdbcType=VARCHAR},
+      iphone_store_id = #{record.iphoneStoreId,jdbcType=VARCHAR},
+      ipad_store_id = #{record.ipadStoreId,jdbcType=VARCHAR},
+      app_level = #{record.appLevel,jdbcType=CHAR},
+      bonus = #{record.bonus,jdbcType=DECIMAL},
+      abandon = #{record.abandon,jdbcType=BIT},
+      ios_download_url = #{record.iosDownloadUrl,jdbcType=VARCHAR},
+      ios_universal_link = #{record.iosUniversalLink,jdbcType=VARCHAR},
+      team_id = #{record.teamId,jdbcType=VARCHAR},
+      android_pkg_name = #{record.androidPkgName,jdbcType=VARCHAR},
+      android_url_scheme = #{record.androidUrlScheme,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mob.demo.domain.AppWithBLOBs" >
+    update app
+    <set >
+      <if test="developerId != null" >
+        developer_id = #{developerId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createIp != null" >
+        create_ip = #{createIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appkey != null" >
+        appkey = #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null" >
+        appsecret = #{appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerName != null" >
+        seller_name = #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerUrl != null" >
+        seller_url = #{sellerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appname != null" >
+        appname = #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="appicon != null" >
+        appicon = #{appicon,jdbcType=VARCHAR},
+      </if>
+      <if test="appPlat != null" >
+        app_plat = #{appPlat,jdbcType=INTEGER},
+      </if>
+      <if test="storename != null" >
+        storename = #{storename,jdbcType=VARCHAR},
+      </if>
+      <if test="storeicon != null" >
+        storeicon = #{storeicon,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null" >
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="online != null" >
+        online = #{online,jdbcType=TINYINT},
+      </if>
+      <if test="instore != null" >
+        instore = #{instore,jdbcType=TINYINT},
+      </if>
+      <if test="onlineAt != null" >
+        online_at = #{onlineAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstAt != null" >
+        first_at = #{firstAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstModel != null" >
+        first_model = #{firstModel,jdbcType=VARCHAR},
+      </if>
+      <if test="testAt != null" >
+        test_at = #{testAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sdkVersion != null" >
+        sdk_version = #{sdkVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="sdkVersionConfirm != null" >
+        sdk_version_confirm = #{sdkVersionConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDevice != null" >
+        first_device = #{firstDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=BIT},
+      </if>
+      <if test="_package != null" >
+        package = #{_package,jdbcType=VARCHAR},
+      </if>
+      <if test="callback != null" >
+        callback = #{callback,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="multiplePlat != null" >
+        multiple_plat = #{multiplePlat,jdbcType=BIT},
+      </if>
+      <if test="publish != null" >
+        publish = #{publish,jdbcType=BIT},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageName != null" >
+        package_name = #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        `language` = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="isRefresh != null" >
+        is_refresh = #{isRefresh,jdbcType=BIT},
+      </if>
+      <if test="bundleId != null" >
+        bundle_id = #{bundleId,jdbcType=VARCHAR},
+      </if>
+      <if test="urlSchemaSuffix != null" >
+        url_schema_suffix = #{urlSchemaSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="iphoneStoreId != null" >
+        iphone_store_id = #{iphoneStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="ipadStoreId != null" >
+        ipad_store_id = #{ipadStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="appLevel != null" >
+        app_level = #{appLevel,jdbcType=CHAR},
+      </if>
+      <if test="bonus != null" >
+        bonus = #{bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="abandon != null" >
+        abandon = #{abandon,jdbcType=BIT},
+      </if>
+      <if test="iosDownloadUrl != null" >
+        ios_download_url = #{iosDownloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iosUniversalLink != null" >
+        ios_universal_link = #{iosUniversalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null" >
+        team_id = #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="androidPkgName != null" >
+        android_pkg_name = #{androidPkgName,jdbcType=VARCHAR},
+      </if>
+      <if test="androidUrlScheme != null" >
+        android_url_scheme = #{androidUrlScheme,jdbcType=VARCHAR},
+      </if>
+      <if test="appVersion != null" >
+        app_version = #{appVersion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="apppkg != null" >
+        apppkg = #{apppkg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where app_id = #{appId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mob.demo.domain.AppWithBLOBs" >
+    update app
+    set developer_id = #{developerId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_ip = #{createIp,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      appkey = #{appkey,jdbcType=VARCHAR},
+      appsecret = #{appsecret,jdbcType=VARCHAR},
+      seller_name = #{sellerName,jdbcType=VARCHAR},
+      seller_url = #{sellerUrl,jdbcType=VARCHAR},
+      appname = #{appname,jdbcType=VARCHAR},
+      appicon = #{appicon,jdbcType=VARCHAR},
+      app_plat = #{appPlat,jdbcType=INTEGER},
+      storename = #{storename,jdbcType=VARCHAR},
+      storeicon = #{storeicon,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      online = #{online,jdbcType=TINYINT},
+      instore = #{instore,jdbcType=TINYINT},
+      online_at = #{onlineAt,jdbcType=TIMESTAMP},
+      first_at = #{firstAt,jdbcType=TIMESTAMP},
+      first_model = #{firstModel,jdbcType=VARCHAR},
+      test_at = #{testAt,jdbcType=TIMESTAMP},
+      sdk_version = #{sdkVersion,jdbcType=VARCHAR},
+      sdk_version_confirm = #{sdkVersionConfirm,jdbcType=VARCHAR},
+      first_device = #{firstDevice,jdbcType=VARCHAR},
+      `level` = #{level,jdbcType=BIT},
+      package = #{_package,jdbcType=VARCHAR},
+      callback = #{callback,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=CHAR},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      multiple_plat = #{multiplePlat,jdbcType=BIT},
+      publish = #{publish,jdbcType=BIT},
+      store_id = #{storeId,jdbcType=VARCHAR},
+      package_name = #{packageName,jdbcType=VARCHAR},
+      `language` = #{language,jdbcType=VARCHAR},
+      is_refresh = #{isRefresh,jdbcType=BIT},
+      bundle_id = #{bundleId,jdbcType=VARCHAR},
+      url_schema_suffix = #{urlSchemaSuffix,jdbcType=VARCHAR},
+      iphone_store_id = #{iphoneStoreId,jdbcType=VARCHAR},
+      ipad_store_id = #{ipadStoreId,jdbcType=VARCHAR},
+      app_level = #{appLevel,jdbcType=CHAR},
+      bonus = #{bonus,jdbcType=DECIMAL},
+      abandon = #{abandon,jdbcType=BIT},
+      ios_download_url = #{iosDownloadUrl,jdbcType=VARCHAR},
+      ios_universal_link = #{iosUniversalLink,jdbcType=VARCHAR},
+      team_id = #{teamId,jdbcType=VARCHAR},
+      android_pkg_name = #{androidPkgName,jdbcType=VARCHAR},
+      android_url_scheme = #{androidUrlScheme,jdbcType=VARCHAR},
+      app_version = #{appVersion,jdbcType=LONGVARCHAR},
+      apppkg = #{apppkg,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where app_id = #{appId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mob.demo.domain.App" >
+    update app
+    set developer_id = #{developerId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_ip = #{createIp,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      appkey = #{appkey,jdbcType=VARCHAR},
+      appsecret = #{appsecret,jdbcType=VARCHAR},
+      seller_name = #{sellerName,jdbcType=VARCHAR},
+      seller_url = #{sellerUrl,jdbcType=VARCHAR},
+      appname = #{appname,jdbcType=VARCHAR},
+      appicon = #{appicon,jdbcType=VARCHAR},
+      app_plat = #{appPlat,jdbcType=INTEGER},
+      storename = #{storename,jdbcType=VARCHAR},
+      storeicon = #{storeicon,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      online = #{online,jdbcType=TINYINT},
+      instore = #{instore,jdbcType=TINYINT},
+      online_at = #{onlineAt,jdbcType=TIMESTAMP},
+      first_at = #{firstAt,jdbcType=TIMESTAMP},
+      first_model = #{firstModel,jdbcType=VARCHAR},
+      test_at = #{testAt,jdbcType=TIMESTAMP},
+      sdk_version = #{sdkVersion,jdbcType=VARCHAR},
+      sdk_version_confirm = #{sdkVersionConfirm,jdbcType=VARCHAR},
+      first_device = #{firstDevice,jdbcType=VARCHAR},
+      `level` = #{level,jdbcType=BIT},
+      package = #{_package,jdbcType=VARCHAR},
+      callback = #{callback,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=CHAR},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      multiple_plat = #{multiplePlat,jdbcType=BIT},
+      publish = #{publish,jdbcType=BIT},
+      store_id = #{storeId,jdbcType=VARCHAR},
+      package_name = #{packageName,jdbcType=VARCHAR},
+      `language` = #{language,jdbcType=VARCHAR},
+      is_refresh = #{isRefresh,jdbcType=BIT},
+      bundle_id = #{bundleId,jdbcType=VARCHAR},
+      url_schema_suffix = #{urlSchemaSuffix,jdbcType=VARCHAR},
+      iphone_store_id = #{iphoneStoreId,jdbcType=VARCHAR},
+      ipad_store_id = #{ipadStoreId,jdbcType=VARCHAR},
+      app_level = #{appLevel,jdbcType=CHAR},
+      bonus = #{bonus,jdbcType=DECIMAL},
+      abandon = #{abandon,jdbcType=BIT},
+      ios_download_url = #{iosDownloadUrl,jdbcType=VARCHAR},
+      ios_universal_link = #{iosUniversalLink,jdbcType=VARCHAR},
+      team_id = #{teamId,jdbcType=VARCHAR},
+      android_pkg_name = #{androidPkgName,jdbcType=VARCHAR},
+      android_url_scheme = #{androidUrlScheme,jdbcType=VARCHAR}
+    where app_id = #{appId,jdbcType=INTEGER}
+  </update>
+</mapper>

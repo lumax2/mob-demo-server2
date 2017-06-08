@@ -1,8 +1,8 @@
-package com.mob.service.impl;
+package com.mob.demo.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.mob.beans.User;
-import com.mob.service.UserService;
+import com.mob.demo.beans.User;
+import com.mob.demo.service.UserService;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

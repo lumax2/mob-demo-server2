@@ -2,8 +2,8 @@ package com.mob.test;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.mob.Application;
-import com.mob.service.DemoService;
+import com.mob.demo.Application;
+import com.mob.demo.service.DemoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
