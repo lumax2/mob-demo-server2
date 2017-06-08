@@ -1,7 +1,9 @@
 package com.mob.demo.service.impl;
 
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import com.mob.demo.beans.User;
 import com.mob.demo.domain.App;
+import com.mob.demo.mongo.UserRepository;
 import com.mob.demo.service.AppInfoService;
 import com.mob.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class DemoServiceImpl implements DemoService {
     @Autowired
     private AppInfoService appInfoService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GET
     @Path("test")
     @Produces(ContentType.TEXT_PLAIN_UTF_8)
@@ -32,6 +37,10 @@ public class DemoServiceImpl implements DemoService {
         System.out.println("demo  method!!");
 
         App app = appInfoService.getAppByAppKey("androidv1101");
-        return "from demo service"+app.getStorename().toString();
+
+
+        User user = userRepository.findByName("fuck");
+
+        return "from demo service"+app.getStorename().toString()+",user="+user.toString();
     }
 }
