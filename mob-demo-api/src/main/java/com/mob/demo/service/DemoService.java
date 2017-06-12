@@ -7,5 +7,8 @@ package com.mob.demo.service;
  */
 public interface DemoService {
     String test();
+
+    String kafka();
+
     String jedis();
 }
