@@ -52,4 +52,8 @@ jedis:
   host: localcentos
   port: 6379
 
+#kafka 配置
+spring.kafka:
+  bootstrap-servers: localcentos:9092
+  consumer.group-id: myGroup
 

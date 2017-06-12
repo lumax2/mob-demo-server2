@@ -3,6 +3,7 @@ package com.mob.demo.service.impl;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.mob.demo.beans.User;
 import com.mob.demo.domain.App;
+import com.mob.demo.kafka.KafkaSender;
 import com.mob.demo.mongo.UserRepository;
 import com.mob.demo.service.AppInfoService;
 import com.mob.demo.service.DemoService;
@@ -35,6 +36,22 @@ public class DemoServiceImpl implements DemoService {
     private RedisClient redisClient;
 
 
+    @Autowired
+    private KafkaSender kafkaSender;
+
+
+    @GET
+    @Path("/kafka")
+    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+    @Override
+    public String kafka() {
+
+        kafkaSender.sendMessage();
+
+        return "ok";
+    }
+
+
     @GET
     @Path("/jedis")
     @Produces(ContentType.TEXT_PLAIN_UTF_8)
@@ -42,7 +59,7 @@ public class DemoServiceImpl implements DemoService {
 
         String test = redisClient.get("test");
 
-        return "test="+test;
+        return "test=" + test;
     }
 
     @GET
@@ -59,7 +76,6 @@ public class DemoServiceImpl implements DemoService {
         String test = redisClient.get("test");
 
 
-
-        return "from demo service"+app.getStorename().toString()+",user="+user.toString()+",test="+test;
+        return "from demo service" + app.getStorename().toString() + ",user=" + user.toString() + ",test=" + test;
     }
 }
