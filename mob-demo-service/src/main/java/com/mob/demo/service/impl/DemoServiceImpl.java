@@ -6,6 +6,7 @@ import com.mob.demo.domain.App;
 import com.mob.demo.mongo.UserRepository;
 import com.mob.demo.service.AppInfoService;
 import com.mob.demo.service.DemoService;
+import com.mob.jedis.client.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.GET;
@@ -30,6 +31,20 @@ public class DemoServiceImpl implements DemoService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RedisClient redisClient;
+
+
+    @GET
+    @Path("/jedis")
+    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+    public String jedis() {
+
+        String test = redisClient.get("test");
+
+        return "test="+test;
+    }
+
     @GET
     @Path("test")
     @Produces(ContentType.TEXT_PLAIN_UTF_8)
@@ -41,6 +56,10 @@ public class DemoServiceImpl implements DemoService {
 
         User user = userRepository.findByName("fuck");
 
-        return "from demo service"+app.getStorename().toString()+",user="+user.toString();
+        String test = redisClient.get("test");
+
+
+
+        return "from demo service"+app.getStorename().toString()+",user="+user.toString()+",test="+test;
     }
 }

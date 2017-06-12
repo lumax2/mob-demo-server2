@@ -1,4 +1,6 @@
 
+debug: true
+
 #dubbox 配置
 spring.dubbo:
   #表示要扫描的package目录
@@ -39,12 +41,15 @@ mybatis:
 spring.data.mongodb:
   database: test
   #authentication-database # Authentication database name.
-  host: cmovdev008
-  port: 41000
+  host: localcentos
+  port: 27017
 #  field-naming-strategy: org.springframework.data.mapping.model.PropertyNameFieldNamingStrategy
 
 
 
-
+#redis 配置
+jedis:
+  host: localcentos
+  port: 6379
 
 

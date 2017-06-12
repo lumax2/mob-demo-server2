@@ -11,6 +11,7 @@
     <modules>
         <module>mob-demo-api</module>
         <module>mob-demo-service</module>
+        <module>../spring-boot-starter-jedis</module>
     </modules>
 
     <properties>
