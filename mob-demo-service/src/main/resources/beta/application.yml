@@ -57,3 +57,8 @@ spring.kafka:
   bootstrap-servers: localcentos:9092
   consumer.group-id: myGroup
 
+
+#log4j2
+logging.config:
+  classpath:log4j2.xml
+

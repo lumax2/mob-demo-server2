@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <dubbo.version>2.8.4</dubbo.version>
         <spring-boot-dependencies.version>1.5.3.RELEASE</spring-boot-dependencies.version>
         <mob-demo-api.version>1.0.0-SNAPSHOT</mob-demo-api.version>

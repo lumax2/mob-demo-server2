@@ -11,10 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @author panal
- * @since 2015/07/08
+ * @author zhouzhipeng
  */
-@Service
+@org.springframework.stereotype.Service
 public class AppInfoServiceImpl implements AppInfoService {
 
     @Autowired
