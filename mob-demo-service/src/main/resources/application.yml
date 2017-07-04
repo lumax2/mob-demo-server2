@@ -10,7 +10,7 @@ spring.dubbo:
     name: mob-demo-service
   #注册中心地址，可以配置多个zookeeper地址
   registry:
-    address: zookeeper://localcentos:2181
+    address: ${zk}
   #dubbo协议，用于服务间直连通信
   dubbo-protocol:
     port: 20881

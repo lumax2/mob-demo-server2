@@ -26,12 +26,12 @@ public class Application {
         try {
             // on startup
 
-            TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
-//                    .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("host1"), 9300))
-                    .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localcentos"), 9300));
-
-            // on shutdown
-            System.out.println(client);
+//            TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
+////                    .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("host1"), 9300))
+//                    .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localcentos"), 9300));
+//
+//            // on shutdown
+//            System.out.println(client);
 //            client.close();
         } catch (Exception e) {
             e.printStackTrace();

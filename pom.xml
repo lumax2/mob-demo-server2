@@ -11,7 +11,6 @@
     <modules>
         <module>mob-demo-api</module>
         <module>mob-demo-service</module>
-        <module>../spring-boot-starter-jedis</module>
     </modules>
 
     <properties>
@@ -26,12 +25,12 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>http://192.168.180.163:8081/nexus/content/repositories/releases/</url>
+            <url>http://mvn.code.mob.com:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>Nexus Snapshot Repository</name>
-            <url>http://192.168.180.163:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://mvn.code.mob.com:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -68,30 +67,30 @@
                     </executions>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <descriptors>
-                            <descriptor>assembly.xml</descriptor>
-                        </descriptors>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>make-assembly</id>
-                            <!-- this is used for inheritance merges -->
-                            <phase>package</phase>
-                            <!-- bind to the packaging phase -->
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-assembly-plugin</artifactId>-->
+                    <!--<version>2.4</version>-->
+                    <!--<configuration>-->
+                        <!--<descriptors>-->
+                            <!--<descriptor>assembly.xml</descriptor>-->
+                        <!--</descriptors>-->
+                        <!--<descriptorRefs>-->
+                            <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+                        <!--</descriptorRefs>-->
+                    <!--</configuration>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<id>make-assembly</id>-->
+                            <!--&lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
+                            <!--<phase>package</phase>-->
+                            <!--&lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
+                            <!--<goals>-->
+                                <!--<goal>single</goal>-->
+                            <!--</goals>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
 
             </plugins>
         </pluginManagement>
