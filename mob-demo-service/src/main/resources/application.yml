@@ -41,8 +41,8 @@ mybatis:
 spring.data.mongodb:
   database: test
   #authentication-database # Authentication database name.
-  host: localcentos
-  port: 27017
+  host: ${mongo.host}
+  port: ${mongo.port}
 #  field-naming-strategy: org.springframework.data.mapping.model.PropertyNameFieldNamingStrategy
 
 
