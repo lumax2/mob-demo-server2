@@ -6,6 +6,7 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.net.InetAddress;
 
@@ -16,6 +17,7 @@ import java.net.InetAddress;
  */
 
 @SpringBootApplication
+@EnableScheduling
 //@ImportResource("classpath:dubbo-*.xml")//启动加在dubbo配置文件
 public class Application {
 
