@@ -18,12 +18,12 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>http://192.168.180.163:8081/nexus/content/repositories/releases/</url>
+            <url>http://mvn.code.mob.com:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>Nexus Snapshot Repository</name>
-            <url>http://192.168.180.163:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://mvn.code.mob.com:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
