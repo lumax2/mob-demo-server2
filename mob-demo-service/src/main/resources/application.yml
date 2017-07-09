@@ -35,22 +35,27 @@ spring:
 #mybatis 配置
 mybatis:
   mapperLocations: classpath:mapper/*.xml
+#
+#
+##mongo 配置
+#spring.data.mongodb:
+#  database: test
+#  #authentication-database # Authentication database name.
+#  host: ${mongo.host}
+#  port: ${mongo.port}
+##  field-naming-strategy: org.springframework.data.mapping.model.PropertyNameFieldNamingStrategy
 
 
-#mongo 配置
-spring.data.mongodb:
-  database: test
-  #authentication-database # Authentication database name.
-  host: ${mongo.host}
-  port: ${mongo.port}
-#  field-naming-strategy: org.springframework.data.mapping.model.PropertyNameFieldNamingStrategy
+## mongo 多数据源集群
+#mongodb:
+#  default:
+#    servers: 192.168.10.243:27000,192.168.10.245:27000
+#  user:
+#    servers: 192.168.10.243:27000,192.168.10.245:27000
+#
 
 
 
-#redis 配置
-jedis:
-  host: localcentos
-  port: 6379
 
 #kafka 配置
 spring.kafka:

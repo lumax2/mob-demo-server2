@@ -3,9 +3,10 @@ package com.mob.demo.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.mob.demo.beans.User;
+import com.mob.demo.dao.CommentDAO;
 import com.mob.demo.domain.App;
 import com.mob.demo.kafka.KafkaSender;
-import com.mob.demo.mongo.UserRepository;
+//import com.mob.demo.mongo.UserRepository;
 import com.mob.demo.service.AppInfoService;
 import com.mob.demo.service.DemoService;
 import com.mob.demo.service.DubboOnlyService;
@@ -34,9 +35,9 @@ public class DemoServiceImpl implements DemoService {
 
     @Autowired
     private AppInfoService appInfoService;
-
-    @Autowired
-    private UserRepository userRepository;
+//
+//    @Autowired
+//    private UserRepository userRepository;
 
     @Autowired
     private RedisClient redisClient;
@@ -71,23 +72,29 @@ public class DemoServiceImpl implements DemoService {
         return "test=" + test;
     }
 
+    @Autowired
+    private CommentDAO commentDAO;
+
     @GET
     @Path("test")
     @Produces(ContentType.TEXT_PLAIN_UTF_8)
     public String test() {
 
-        logger.info("test method");
+//        logger.info("test method");
+//
+//        System.out.println("demo  method!!");
+//
+//        App app = appInfoService.getAppByAppKey("androidv1101");
+//
+//
+////        User user = userRepository.findByName("fuck");
+//
+//        String test = redisClient.get("test");
 
-        System.out.println("demo  method!!");
+        long c=commentDAO.count();
 
-        App app = appInfoService.getAppByAppKey("androidv1101");
+        return "commentdao.count:"+c;
 
-
-        User user = userRepository.findByName("fuck");
-
-        String test = redisClient.get("test");
-
-
-        return "from demo service" + app.getStorename().toString() + ",user=" + user.toString() + ",test=" + test;
+//        return "from demo service" + app.getStorename().toString() + ",user=" + ""/*user.toString()*/ + ",test=" + test;
     }
 }
