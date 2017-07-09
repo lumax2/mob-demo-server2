@@ -18,7 +18,7 @@ import java.net.InetAddress;
 @SpringBootApplication
 //@EnableAutoConfiguration
 @EnableScheduling
-@PropertySource("classpath:redis.yml")
+@PropertySource(value = {"classpath:redis.yml"}/*, ignoreResourceNotFound = true*/)
 public class Application {
 
     public static void main(String[] args) {

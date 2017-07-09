@@ -14,6 +14,7 @@ import com.mob.jedis.client.RedisClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import redis.clients.jedis.JedisCluster;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -38,6 +39,10 @@ public class DemoServiceImpl implements DemoService {
 //
 //    @Autowired
 //    private UserRepository userRepository;
+//
+//    @Autowired
+//    private RedisClient redisClient;
+
 
     @Autowired
     private RedisClient redisClient;

@@ -21,10 +21,21 @@ spring.dubbo:
 
 
 
+#kafka 配置
+spring.kafka:
+  bootstrap-servers: localcentos:9092
+  consumer.group-id: myGroup
+
+
+#log4j2
+logging.config:
+  classpath:log4j2.xml
+
+
 #druid 数据源配置
 spring:
     datasource:
-        url: jdbc:mysql://192.168.180.86:3306/sharesdk
+        url: jdbc:mysql://10.18.97.56:3306/sharesdk
         username: root
         password: lin12345
         # 使用druid数据源
@@ -35,35 +46,11 @@ spring:
 #mybatis 配置
 mybatis:
   mapperLocations: classpath:mapper/*.xml
-#
-#
-##mongo 配置
-#spring.data.mongodb:
-#  database: test
-#  #authentication-database # Authentication database name.
-#  host: ${mongo.host}
-#  port: ${mongo.port}
-##  field-naming-strategy: org.springframework.data.mapping.model.PropertyNameFieldNamingStrategy
-
-
-## mongo 多数据源集群
-#mongodb:
-#  default:
-#    servers: 192.168.10.243:27000,192.168.10.245:27000
-#  user:
-#    servers: 192.168.10.243:27000,192.168.10.245:27000
-#
-
-
-
-
-#kafka 配置
-spring.kafka:
-  bootstrap-servers: localcentos:9092
-  consumer.group-id: myGroup
-
-
-#log4j2
-logging.config:
-  classpath:log4j2.xml
+redis.clusters:
+  default:
+    nodes: 10.18.97.56:6379
+    timeout: 3
+    maxAttempts: 3
+  user:
+    nodes: 10.18.97.56:6379
 

@@ -11,7 +11,6 @@ import java.util.Date;
 public class ScheduledTasks {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    @Value("${testjedis}")
     String aaa;
 
     @Scheduled(fixedRate = 3000)

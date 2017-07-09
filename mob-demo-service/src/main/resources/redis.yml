@@ -1,8 +1,0 @@
-testjedis: abc
-
-
-#redis 默认配置
-#jedis:
-#  host: localcentos
-#  port: 6379
-#
