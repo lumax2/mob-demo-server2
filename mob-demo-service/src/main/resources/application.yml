@@ -50,12 +50,12 @@ logging.config:
 #
 
 
-
-redis.clusters:
-  default:
-    nodes: ${redis.default.nodes}
-    timeout: 3
-    maxAttempts: 3
-  user:
-    nodes: ${redis.user.nodes}
-
+#
+#redis.clusters:
+#  default:
+#    nodes: ${redis.default.nodes}
+#    timeout: 3
+#    maxAttempts: 3
+#  user:
+#    nodes: ${redis.user.nodes}
+#
