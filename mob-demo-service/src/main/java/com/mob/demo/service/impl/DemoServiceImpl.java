@@ -5,7 +5,7 @@ import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.mob.demo.beans.User;
 import com.mob.demo.dao.CommentDAO;
 import com.mob.demo.domain.App;
-import com.mob.demo.kafka.KafkaSender;
+//import com.mob.demo.kafka.KafkaSender;
 //import com.mob.demo.mongo.UserRepository;
 import com.mob.demo.service.AppInfoService;
 import com.mob.demo.service.DemoService;
@@ -48,8 +48,8 @@ public class DemoServiceImpl implements DemoService {
     private RedisClient redisClient;
 
 
-    @Autowired
-    private KafkaSender kafkaSender;
+//    @Autowired
+//    private KafkaSender kafkaSender;
 
 
     private Logger logger = LogManager.getLogger(DemoServiceImpl.class);
@@ -61,7 +61,7 @@ public class DemoServiceImpl implements DemoService {
     @Override
     public String kafka() {
 
-        kafkaSender.sendMessage();
+//        kafkaSender.sendMessage();
 
         return "ok";
     }
