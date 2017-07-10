@@ -46,6 +46,10 @@ spring:
 #mybatis 配置
 mybatis:
   mapperLocations: classpath:mapper/*.xml
+
+
+
+
 redis.clusters:
   default:
     nodes: 10.18.97.56:6379
