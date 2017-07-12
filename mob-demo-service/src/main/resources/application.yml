@@ -5,7 +5,7 @@ debug: true
 #dubbox 配置
 spring.dubbo:
   #表示要扫描的package目录
-  scan: com.mob.demo
+ scan: com.mob.demo
   #应用名称标识
   application:
     name: mob-demo-service
@@ -19,6 +19,7 @@ spring.dubbo:
   rest-protocol:
     port: 8081
     server: tomcat
+
 
 
 
