@@ -1,7 +1,4 @@
 
-debug: true
-
-
 #dubbox 配置
 spring.dubbo:
   #表示要扫描的package目录
