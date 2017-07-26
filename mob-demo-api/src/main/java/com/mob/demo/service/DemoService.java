@@ -11,4 +11,7 @@ public interface DemoService {
     String kafka();
 
     String jedis();
+
+    String estest();
+
 }
