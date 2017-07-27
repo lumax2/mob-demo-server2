@@ -14,4 +14,6 @@ public interface DemoService {
 
     String estest();
 
+
+    String mybatis();
 }

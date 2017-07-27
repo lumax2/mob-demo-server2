@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 
 @SpringBootApplication(scanBasePackages = "com.mob.demo")
-@EnableScheduling
+@PropertySource(value = "classpath:mybatis.properties",ignoreResourceNotFound = true)
 public class Application {
 
     public static void main(String[] args) {

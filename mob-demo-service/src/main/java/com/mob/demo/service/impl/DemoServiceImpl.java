@@ -170,4 +170,17 @@ public class DemoServiceImpl implements DemoService {
         list.add(prefixName + suffixName);
         return list;
     }
+
+
+
+    @GET
+    @Path("/mybatis")
+    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+    public String mybatis() {
+        App app = appInfoService.getAppByAppKey("androidv1101");
+
+        return app.toString();
+
+//        return "from demo service" + app.getStorename().toString() + ",user=" + ""/*user.toString()*/ + ",test=" + test;
+    }
 }

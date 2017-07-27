@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mob.demo.mapper.AppMapper" >
+<mapper namespace="com.mob.demo.mysql.mapper.AppMapper" >
   <resultMap id="BaseResultMap" type="com.mob.demo.domain.App" >
     <id column="app_id" property="appId" jdbcType="INTEGER" />
     <result column="developer_id" property="developerId" jdbcType="INTEGER" />
