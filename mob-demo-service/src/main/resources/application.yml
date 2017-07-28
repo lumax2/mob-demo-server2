@@ -15,9 +15,9 @@ spring.dubbo:
   dubbo-protocol:
     port: 20881
   #restful协议，用于http第三方调用
-  rest-protocol:
-    port: 8081
-    server: tomcat
+#  rest-protocol:
+#    port: 8081
+#    server: tomcat
 #  consumer: 5000
 
 

@@ -14,6 +14,6 @@ public class DubboDemoClientService {
 //    private DubboDemoService dubboDemoService;
 
     public void doSome(){
-
+        System.out.println("do something !!!");
     }
 }

@@ -24,10 +24,10 @@ import org.elasticsearch.search.SearchHit;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisCluster;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+//import javax.ws.rs.GET;
+//import javax.ws.rs.Path;
+//import javax.ws.rs.Produces;
+//import javax.ws.rs.core.MediaType;
 import java.util.*;
 
 /**
@@ -37,7 +37,7 @@ import java.util.*;
  */
 //@Service
 
-@Path("demo")
+//@Path("demo")
 @com.alibaba.dubbo.config.annotation.Service
 public class DemoServiceImpl implements DemoService {
 
@@ -64,9 +64,9 @@ public class DemoServiceImpl implements DemoService {
     private Logger logger = LogManager.getLogger(DemoServiceImpl.class);
 
 
-    @GET
-    @Path("/kafka")
-    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+//    @GET
+//    @Path("/kafka")
+//    @Produces(ContentType.TEXT_PLAIN_UTF_8)
     @Override
     public String kafka() {
 
@@ -76,9 +76,9 @@ public class DemoServiceImpl implements DemoService {
     }
 
 
-    @GET
-    @Path("/jedis")
-    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+//    @GET
+//    @Path("/jedis")
+//    @Produces(ContentType.TEXT_PLAIN_UTF_8)
     public String jedis() {
 
         String test = redisClient.get("test");
@@ -89,9 +89,9 @@ public class DemoServiceImpl implements DemoService {
     @Autowired
     private CommentDAO commentDAO;
 
-    @GET
-    @Path("test")
-    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+//    @GET
+//    @Path("test")
+//    @Produces(ContentType.TEXT_PLAIN_UTF_8)
     public String test() {
 
 //        logger.info("test method");
@@ -115,9 +115,9 @@ public class DemoServiceImpl implements DemoService {
     @Autowired
     private ESClient esClient;
 
-    @GET
-    @Path("/estest")
-    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+//    @GET
+//    @Path("/estest")
+//    @Produces(ContentType.TEXT_PLAIN_UTF_8)
     public String estest() {
 
         List<String> retList = new ArrayList<>();
@@ -173,9 +173,9 @@ public class DemoServiceImpl implements DemoService {
 
 
 
-    @GET
-    @Path("/mybatis")
-    @Produces(ContentType.TEXT_PLAIN_UTF_8)
+//    @GET
+//    @Path("/mybatis")
+//    @Produces(ContentType.TEXT_PLAIN_UTF_8)
     public String mybatis() {
         App app = appInfoService.getAppByAppKey("androidv1101");
 
