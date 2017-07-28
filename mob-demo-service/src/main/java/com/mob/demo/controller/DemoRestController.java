@@ -1,6 +1,7 @@
 package com.mob.demo.controller;
 
 import com.mob.demo.dubbox.DubboDemoClientService;
+import com.mob.demo.es.ESTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,6 +70,20 @@ public class DemoRestController {
         return user;
     }
 
+
+    @Autowired
+    private ESTestService esTestService;
+
+
+    @RequestMapping(value = "/testes")
+    public String testES() {
+        try {
+            esTestService.findDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ok";
+    }
 
 
     public static class User {

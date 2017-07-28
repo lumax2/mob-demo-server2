@@ -11,7 +11,6 @@ import com.mob.demo.kafka.KafkaSender;
 import com.mob.demo.service.AppInfoService;
 import com.mob.demo.service.DemoService;
 import com.mob.demo.service.DubboOnlyService;
-import com.mob.elasticsearch.ESClient;
 import com.mob.jedis.client.RedisClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -112,48 +111,48 @@ public class DemoServiceImpl implements DemoService {
 //        return "from demo service" + app.getStorename().toString() + ",user=" + ""/*user.toString()*/ + ",test=" + test;
     }
 
-    @Autowired
-    private ESClient esClient;
+//    @Autowired
+//    private ESClient esClient;
 
 //    @GET
 //    @Path("/estest")
 //    @Produces(ContentType.TEXT_PLAIN_UTF_8)
-    public String estest() {
-
-        List<String> retList = new ArrayList<>();
-        String plat = "android";
-        String sdk = "sharesdk";
-        String sdkver = "";
-        String apppkg = "";
-        String appver = "";
-        try {
-            List<String> indexNames = getIndexNames();
-            BoolQueryBuilder query = QueryBuilders.boolQuery();
-            TermQueryBuilder platQuery = QueryBuilders.termQuery("plat", plat);
-            TermQueryBuilder sdkQuery = QueryBuilders.termQuery("sdk", sdk);
-            TermQueryBuilder sdkverQuery = QueryBuilders.termQuery("sdkver", sdkver);
-            TermQueryBuilder apppkgQuery = QueryBuilders.termQuery("apppkg", apppkg);
-            TermQueryBuilder appverQuery = QueryBuilders.termQuery("appver", appver);
-            query.must(platQuery).must(sdkQuery).must(sdkverQuery).must(apppkgQuery)
-                    .must(appverQuery);
-            SearchRequestBuilder searchRequestBuilder = esClient.prepareSearch(indexNames.toArray(new
-                    String[0]));
-            searchRequestBuilder.setQuery(query);
-            SearchResponse sr = searchRequestBuilder.execute().actionGet();
-            Iterator<SearchHit> i = sr.getHits().iterator();
-            while (i.hasNext()) {
-                Map<String, Object> resourceMap = i.next().getSource();
-                retList.add((String) resourceMap.get("id"));
-
-                System.out.println(resourceMap);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return e.toString();
-        }
-
-        return retList.size()+"";
-    }
+//    public String estest() {
+//
+//        List<String> retList = new ArrayList<>();
+//        String plat = "android";
+//        String sdk = "sharesdk";
+//        String sdkver = "";
+//        String apppkg = "";
+//        String appver = "";
+//        try {
+//            List<String> indexNames = getIndexNames();
+//            BoolQueryBuilder query = QueryBuilders.boolQuery();
+//            TermQueryBuilder platQuery = QueryBuilders.termQuery("plat", plat);
+//            TermQueryBuilder sdkQuery = QueryBuilders.termQuery("sdk", sdk);
+//            TermQueryBuilder sdkverQuery = QueryBuilders.termQuery("sdkver", sdkver);
+//            TermQueryBuilder apppkgQuery = QueryBuilders.termQuery("apppkg", apppkg);
+//            TermQueryBuilder appverQuery = QueryBuilders.termQuery("appver", appver);
+//            query.must(platQuery).must(sdkQuery).must(sdkverQuery).must(apppkgQuery)
+//                    .must(appverQuery);
+//            SearchRequestBuilder searchRequestBuilder = esClient.prepareSearch(indexNames.toArray(new
+//                    String[0]));
+//            searchRequestBuilder.setQuery(query);
+//            SearchResponse sr = searchRequestBuilder.execute().actionGet();
+//            Iterator<SearchHit> i = sr.getHits().iterator();
+//            while (i.hasNext()) {
+//                Map<String, Object> resourceMap = i.next().getSource();
+//                retList.add((String) resourceMap.get("id"));
+//
+//                System.out.println(resourceMap);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return e.toString();
+//        }
+//
+//        return retList.size()+"";
+//    }
 
     private List<String> getIndexNames() {
         Calendar cal = Calendar.getInstance();
