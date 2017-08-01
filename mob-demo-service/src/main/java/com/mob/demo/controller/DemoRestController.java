@@ -1,7 +1,10 @@
 package com.mob.demo.controller;
 
-import com.mob.demo.dubbox.DubboDemoClientService;
 import com.mob.demo.es.ESTestService;
+import com.mob.demo.service.DemoService;
+import com.mob.util.log.ErrorOutput;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +24,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/demo")
 public class DemoRestController {
 
+    // log4j2
+    private static final Logger logger = LogManager.getLogger(DemoRestController.class);
+
+    //引用dubbo服务
+//    @Reference
+//    private DubboDemoClientService dubboDemoClientService;
+
+
     @Autowired
-    private DubboDemoClientService dubboDemoClientService;
+    private DemoService demoService;
 
     /**
-     * 请求： http://localhost:8080/demo/ http方式：get 请求返回contentType: text/plain
-     * 请求responseBody: "Hello page"
+     * 请求： http://localhost:8080 http方式：get 请求返回contentType: text/plain
      */
     @RequestMapping
     public String index() {
-        dubboDemoClientService.doSome();
-        return "Hello page";
+        demoService.doSth();
+
+        //log4j2 使用，和log4j一样
+        logger.info("info log test!!");
+
+        //ErrorOutput专用日志输出
+        ErrorOutput.log(new RuntimeException("test error"));
+
+        return "Hello mob!";
     }
 
 

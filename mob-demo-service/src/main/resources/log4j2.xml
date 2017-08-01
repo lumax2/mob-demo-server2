@@ -25,6 +25,19 @@
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
         </RollingFile>
+
+
+
+        <RollingFile name="Errout" fileName="${LOG_HOME}/error.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/main-%d{yyyy-MM-dd}-%i.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
     </Appenders>
 
     <Loggers>
@@ -33,5 +46,9 @@
             <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
         </root>
+
+        <Logger name="com.mob.util.log" level="error" additivity="false">
+            <appender-ref ref="Errout"/>
+        </Logger>
     </Loggers>
 </Configuration>
