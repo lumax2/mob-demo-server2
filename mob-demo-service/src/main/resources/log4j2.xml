@@ -16,7 +16,7 @@
         </Console>
 
         <RollingFile name="RollingFileInfo" fileName="${LOG_HOME}/main.log"
-                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/main-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="${LOG_HOME}/main-%d{yyyy-MM-dd}.log">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
@@ -24,12 +24,13 @@
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
+            <DirectWriteRolloverStrategy maxFiles="10"/>
         </RollingFile>
 
 
 
         <RollingFile name="Errout" fileName="${LOG_HOME}/error.log"
-                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/main-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="${LOG_HOME}/main-%d{yyyy-MM-dd}.log">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
@@ -37,6 +38,8 @@
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
+            <DirectWriteRolloverStrategy maxFiles="10"/>
+
         </RollingFile>
     </Appenders>
 

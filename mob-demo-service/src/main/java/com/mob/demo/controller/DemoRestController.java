@@ -3,13 +3,18 @@ package com.mob.demo.controller;
 import com.mob.demo.es.ESTestService;
 import com.mob.demo.service.DemoService;
 import com.mob.util.log.ErrorOutput;
+import com.mob.web.anno.MobBody;
+import com.mob.web.anno.MobResponse;
+import com.mob.web.entity.MobException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import static com.mob.web.entity.ClientErrorCode.*;
+import static com.mob.web.entity.ServerErrorCode.*;
+
 
 /**
  * springboot controller 演示类(后续将提供更多演示demo，大家也可以自行去springboot官网学习：
@@ -20,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 // 相当于 @Controller + @ResponseBody
 // 该注解 方法method 返回类型是String时候则返回string,返回对象时候则讲json_encode 该对象的json字符串
-@RestController
+@Controller
 @RequestMapping(value = "/demo")
 public class DemoRestController {
 
@@ -103,9 +108,33 @@ public class DemoRestController {
     }
 
 
+    @RequestMapping(value = "/mobjson")
+    @MobResponse
+    public User mobjson(@MobBody String jsonStr, @RequestHeader(value="User-Agent") String contentType) {
+
+        logger.error("==========> jsonStr:"+jsonStr);
+
+
+        boolean sthError=true; //模拟业务异常
+        if(sthError){
+            throw new MobException(_5004,"please try it next time!");
+        }
+
+
+        return new User(1,"zhouzhipeng,"+contentType+",decoded body:"+jsonStr);
+    }
+
     public static class User {
         private int id;
         private String name;
+
+        public User(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public User() {
+        }
 
         public int getId() {
             return id;

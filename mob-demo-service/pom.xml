@@ -91,7 +91,7 @@
                 <version>${spring-boot-dependencies.version}</version>
                 <configuration>
                     <jvmArguments>
-                        <!-- -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005-->
+                         -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
                     </jvmArguments>
                 </configuration>
                 <dependencies>
@@ -275,6 +275,11 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>com.mob.web</groupId>
+            <artifactId>mob-common-web</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
