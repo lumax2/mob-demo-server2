@@ -3,13 +3,19 @@ package com.mob.test;
 import com.alibaba.fastjson.JSONObject;
 import com.lamfire.code.AES;
 import com.lamfire.code.Base64;
+import com.lamfire.utils.ZipUtils;
 import com.mob.demo.controller.DemoRestController;
 import com.mob.util.crypt.MobCSStandardCrypter;
 import com.mob.util.crypt.rsa.MobRSACrypter;
 import com.mob.util.http.HttpUtils;
 import org.apache.http.client.utils.HttpClientUtils;
+import org.apache.tools.zip.ZipUtil;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * TODO:写描述
@@ -41,6 +47,58 @@ public class RequestClientTest {
         String  respStr= new String(aes.decode(decode));
 
         System.out.println("after crypte:"+respStr);
+
+
+
+//        String str="abc周志鹏 ";
+//        byte[] compressStr = testGZIPCompress(str);
+////        System.out.println(compressStr);
+////
+//        System.out.println(testGZIPDECompress(compressStr));
+
+//        byte[] gzip = ZipUtils.gzip(str.getBytes("UTF-8"));
+//
+//        System.out.println(new String( ZipUtils.ungzip(gzip),"UTF-8"));
+
+    }
+
+
+    private static byte[] testGZIPCompress(String str) throws Exception{
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//        GZIPOutputStream gzip = new GZIPOutputStream(out);
+//        gzip.write(str.getBytes("UTF-8"));
+//        gzip.finish();
+//
+//        return out.toString("UTF-8");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        GZIPOutputStream gzip;
+        gzip = new GZIPOutputStream(out);
+        gzip.write(str.getBytes("UTF-8"));
+        gzip.finish();
+        gzip.flush();
+        gzip.close();
+
+//        return new String(ZipUtils.gzip(str.getBytes("UTF-8")),"UTF-8") ;
+
+        return out.toByteArray();
+    }
+
+    private static String testGZIPDECompress(byte[] bytes) throws Exception{
+        ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+        GZIPInputStream gzipInputStream = new GZIPInputStream(in);
+
+        byte[] buffer = new byte[256];
+        int n;
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        while ((n = gzipInputStream.read(buffer)) >= 0) {
+            out.write(buffer, 0, n);
+        }
+        return out.toString("UTF-8");
+
+//        return new String(ZipUtils.ungzip(str.getBytes("UTF-8")),"UTF-8") ;
 
     }
 

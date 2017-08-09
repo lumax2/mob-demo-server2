@@ -19,3 +19,37 @@ spring.dubbo:
 #log4j2
 logging.config:
   classpath:log4j2.xml
+
+# shutdown hook
+
+#启用shutdown
+endpoints.shutdown.enabled: true
+##禁用密码验证
+endpoints.shutdown.sensitive: false
+
+
+endpoints.health.sensitive: false  #actuator的health接口是否需要安全保证
+endpoints.health.enabled: true
+
+
+server.compression.enabled: true
+server.compression.mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+
+
+#开启shutdown的安全验证
+#endpoints.shutdown.sensitive=true
+#
+##验证用户名
+#security.user.name=admin
+#
+##验证密码
+#security.user.password=admin
+##角色
+#management.security.role=SUPERUSER
+#
+## 指定端口
+#management.port=8081
+#
+## 指定地址
+#management.address=127.0.0.1

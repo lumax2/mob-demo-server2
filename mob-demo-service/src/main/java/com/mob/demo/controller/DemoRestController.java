@@ -44,6 +44,7 @@ public class DemoRestController {
      * 请求： http://localhost:8080 http方式：get 请求返回contentType: text/plain
      */
     @RequestMapping
+    @ResponseBody
     public String index() {
         demoService.doSth();
 
@@ -64,6 +65,7 @@ public class DemoRestController {
      * @return 纯字符串
      */
     @RequestMapping(value = "/hello")
+    @ResponseBody
     public String hello(@RequestParam(value = "name", defaultValue = "mob") String name) {
         return "hello " + name;
     }
@@ -73,6 +75,7 @@ public class DemoRestController {
      * 路径参数：包含在路径中  如: /book/123  (123业务上多为book的id）
      */
     @RequestMapping("/hello2/{myName}")
+    @ResponseBody
     public String hello2(@PathVariable String myName) {
         return "Hello " + myName + "!!!";
     }
@@ -85,6 +88,7 @@ public class DemoRestController {
      * @return
      */
     @RequestMapping("/getDemo/{myName}")
+    @ResponseBody
     User getDemo(@PathVariable String myName) {
         User user = new User();
         user.setId(123);
@@ -98,6 +102,7 @@ public class DemoRestController {
 
 
     @RequestMapping(value = "/testes")
+    @ResponseBody
     public String testES() {
         try {
             esTestService.findDB();
@@ -114,11 +119,11 @@ public class DemoRestController {
 
         logger.error("==========> jsonStr:"+jsonStr);
 
-
-        boolean sthError=true; //模拟业务异常
-        if(sthError){
-            throw new MobException(_5004,"please try it next time!");
-        }
+//
+//        boolean sthError=true; //模拟业务异常
+//        if(sthError){
+//            throw new MobException(_5004,"please try it next time!");
+//        }
 
 
         return new User(1,"zhouzhipeng,"+contentType+",decoded body:"+jsonStr);
