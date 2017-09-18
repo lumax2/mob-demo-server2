@@ -33,7 +33,7 @@ public class RequestClientTest {
 
         String data=clientEncrypt(srcStr,aesKey);
 
-        HttpUtils.PostEntity resp = new HttpUtils.PostEntity("http://localhost:8080/demo/mobjson", data).invoke();
+        HttpUtils.PostEntity resp = new HttpUtils.PostEntity("http://localhost:8080/demo/mobjson", data).invoke(false);
 
         String resp1 = resp.getResp();
 

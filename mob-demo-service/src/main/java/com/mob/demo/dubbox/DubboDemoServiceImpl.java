@@ -1,5 +1,8 @@
 package com.mob.demo.dubbox;
 
+import com.mob.web.entity.ClientErrorCode;
+import com.mob.web.entity.MobException;
+
 /**
  * dubbo服务类不仅可以在项目内被@Autowired方式直接使用，还可以在其他dubbo项目中被使用。使用tcp通信。
  *
@@ -12,7 +15,10 @@ package com.mob.demo.dubbox;
 @com.alibaba.dubbo.config.annotation.Service
 public class DubboDemoServiceImpl implements DubboDemoService {
     @Override
-    public String test(Entity entity) {
-        return "test :"+entity.getName();
+    public String test(String a) {
+        if(true){
+            throw new MobException(ClientErrorCode._4002,"非法请求");
+        }
+        return "test :"+a;
     }
 }

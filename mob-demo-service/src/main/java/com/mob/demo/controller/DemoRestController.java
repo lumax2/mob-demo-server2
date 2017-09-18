@@ -1,5 +1,6 @@
 package com.mob.demo.controller;
 
+import com.mob.demo.dubbox.DubboDemoClientService;
 import com.mob.demo.es.ESTestService;
 import com.mob.demo.service.DemoService;
 import com.mob.util.log.ErrorOutput;
@@ -33,12 +34,22 @@ public class DemoRestController {
     private static final Logger logger = LogManager.getLogger(DemoRestController.class);
 
     //引用dubbo服务
-//    @Reference
-//    private DubboDemoClientService dubboDemoClientService;
+    @Autowired
+    private DubboDemoClientService dubboDemoClientService;
 
 
     @Autowired
     private DemoService demoService;
+
+
+    @RequestMapping("/dubbo")
+    @ResponseBody
+    public String testDemmo() {
+        dubboDemoClientService.doSome();
+
+        return "Hello dubbo!";
+    }
+
 
     /**
      * 请求： http://localhost:8080 http方式：get 请求返回contentType: text/plain
@@ -115,9 +126,9 @@ public class DemoRestController {
 
     @RequestMapping(value = "/mobjson")
     @MobResponse
-    public User mobjson(@MobBody String jsonStr, @RequestHeader(value="User-Agent") String contentType) {
+    public String mobjson(@MobBody User user, @RequestHeader(value="User-Agent") String contentType) {
 
-        logger.error("==========> jsonStr:"+jsonStr);
+        logger.error("==========> jsonStr:"+user);
 
 //
 //        boolean sthError=true; //模拟业务异常
@@ -126,12 +137,20 @@ public class DemoRestController {
 //        }
 
 
-        return new User(1,"zhouzhipeng,"+contentType+",decoded body:"+jsonStr);
+        return new User(1,"zhouzhipeng,"+contentType+",decoded body:"+user).toString();
     }
 
     public static class User {
         private int id;
         private String name;
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
 
         public User(int id, String name) {
             this.id = id;

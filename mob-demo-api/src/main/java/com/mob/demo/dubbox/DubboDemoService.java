@@ -7,5 +7,5 @@ package com.mob.demo.dubbox;
  */
 public interface DubboDemoService {
 
-    String test(Entity entity);
+    String test(String entity);
 }

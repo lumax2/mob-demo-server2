@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class DubboDemoClientService {
 //    @Reference
-//    private DubboDemoService dubboDemoService;
+    private DubboDemoService dubboDemoService;
 
     public void doSome(){
+        dubboDemoService.test("abc");
         System.out.println("do something !!!");
     }
 }
