@@ -13,6 +13,7 @@ spring.dubbo:
     address: ${zk}
   #dubbo协议，用于服务间直连通信
   dubbo-protocol:
+    host: pay_duboho_servier
     port: ${dubbo.port}
 
 
