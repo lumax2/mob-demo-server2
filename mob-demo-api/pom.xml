@@ -7,8 +7,7 @@
         <!--<groupId>com.mob</groupId>-->
         <!--<version>1.0.0-SNAPSHOT</version>-->
     <!--</parent>-->
-    <!--上面注释开启后其他项目无法引入-->
-    <modelVersion>4.0.0</modelVersion>
+`    <modelVersion>4.0.0</modelVersion>
     <groupId>com.mob</groupId>
     <name>mob-demo-api</name>
     <packaging>jar</packaging>
