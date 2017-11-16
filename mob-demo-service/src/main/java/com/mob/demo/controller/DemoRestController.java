@@ -75,7 +75,7 @@ public class DemoRestController {
      * @param name
      * @return 纯字符串
      */
-    @RequestMapping(value = "/hello")
+    @RequestMapping(value = "/hello",method = {RequestMethod.POST})
     @ResponseBody
     public String hello(@RequestParam(value = "name", defaultValue = "mob") String name) {
         return "hello " + name;
@@ -124,11 +124,13 @@ public class DemoRestController {
     }
 
 
-    @RequestMapping(value = "/mobjson")
+    @PostMapping(value = "/mobjson")
     @MobResponse
     public String mobjson(@MobBody User user, @RequestHeader(value="User-Agent") String contentType) {
 
         logger.error("==========> jsonStr:"+user);
+
+        int a=1/0;
 
 //
 //        boolean sthError=true; //模拟业务异常
