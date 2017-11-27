@@ -1,7 +1,7 @@
 package com.mob.demo.dubbox;
 
-import com.mob.web.entity.ClientErrorCode;
-import com.mob.web.entity.MobException;
+import com.mob.util.exception.ClientErrorCode;
+import com.mob.util.exception.MobException;
 
 /**
  * dubbo服务类不仅可以在项目内被@Autowired方式直接使用，还可以在其他dubbo项目中被使用。使用tcp通信。

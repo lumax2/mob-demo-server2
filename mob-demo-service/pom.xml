@@ -275,14 +275,14 @@
         <dependency>
             <groupId>com.mob.util</groupId>
             <artifactId>mob-common-util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
 
 
         <dependency>
             <groupId>com.mob.web</groupId>
             <artifactId>mob-common-web</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.2</version>
         </dependency>
 
         <dependency>

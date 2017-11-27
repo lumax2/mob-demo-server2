@@ -1,20 +1,20 @@
 package com.mob.demo.controller;
 
 import com.mob.demo.dubbox.DubboDemoClientService;
-import com.mob.demo.es.ESTestService;
+//import com.mob.demo.es.ESTestService;
 import com.mob.demo.service.DemoService;
 import com.mob.util.log.ErrorOutput;
 import com.mob.web.anno.MobBody;
 import com.mob.web.anno.MobResponse;
-import com.mob.web.entity.MobException;
+import com.mob.util.exception.MobException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import static com.mob.web.entity.ClientErrorCode.*;
-import static com.mob.web.entity.ServerErrorCode.*;
+import static com.mob.util.exception.ClientErrorCode.*;
+import static com.mob.util.exception.ServerErrorCode.*;
 
 
 /**
@@ -108,20 +108,20 @@ public class DemoRestController {
     }
 
 
-    @Autowired
-    private ESTestService esTestService;
+//    @Autowired
+//    private ESTestService esTestService;
 
 
-    @RequestMapping(value = "/testes")
-    @ResponseBody
-    public String testES() {
-        try {
-            esTestService.findDB();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "ok";
-    }
+//    @RequestMapping(value = "/testes")
+//    @ResponseBody
+//    public String testES() {
+//        try {
+//            esTestService.findDB();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return "ok";
+//    }
 
 
     @PostMapping(value = "/mobjson")
@@ -130,7 +130,7 @@ public class DemoRestController {
 
         logger.error("==========> jsonStr:"+user);
 
-        int a=1/0;
+//        int a=1/0;
 
 //
 //        boolean sthError=true; //模拟业务异常
